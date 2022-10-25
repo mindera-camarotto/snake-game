@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06D99A932908112600F428CA /* ShiftRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D99A922908112600F428CA /* ShiftRegister.swift */; };
+		06D99A9B290817BA00F428CA /* snake_game_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D99A9A290817BA00F428CA /* snake_game_Watch_AppTests.swift */; };
+		06D99AA2290817D700F428CA /* ShiftRegisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D99AA1290817D700F428CA /* ShiftRegisterTests.swift */; };
 		81EF6C2A2906B29A00770CD4 /* snake-game Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 81EF6C292906B29A00770CD4 /* snake-game Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		81EF6C2F2906B29A00770CD4 /* snake_gameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C2E2906B29A00770CD4 /* snake_gameApp.swift */; };
 		81EF6C312906B29A00770CD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C302906B29A00770CD4 /* ContentView.swift */; };
@@ -18,6 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		06D99A9C290817BA00F428CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81EF6C1D2906B29900770CD4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81EF6C282906B29A00770CD4;
+			remoteInfo = "snake-game Watch App";
+		};
 		81EF6C2B2906B29A00770CD4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 81EF6C1D2906B29900770CD4 /* Project object */;
@@ -42,6 +52,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		06D99A922908112600F428CA /* ShiftRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftRegister.swift; sourceTree = "<group>"; };
+		06D99A98290817BA00F428CA /* snake-game Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "snake-game Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		06D99A9A290817BA00F428CA /* snake_game_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snake_game_Watch_AppTests.swift; sourceTree = "<group>"; };
+		06D99AA1290817D700F428CA /* ShiftRegisterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftRegisterTests.swift; sourceTree = "<group>"; };
 		81EF6C232906B29A00770CD4 /* snake-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snake-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EF6C292906B29A00770CD4 /* snake-game Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snake-game Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EF6C2E2906B29A00770CD4 /* snake_gameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snake_gameApp.swift; sourceTree = "<group>"; };
@@ -54,6 +68,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		06D99A95290817BA00F428CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81EF6C262906B29A00770CD4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,10 +85,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06D99A99290817BA00F428CA /* snake-game Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				06D99A9A290817BA00F428CA /* snake_game_Watch_AppTests.swift */,
+				06D99AA1290817D700F428CA /* ShiftRegisterTests.swift */,
+			);
+			path = "snake-game Watch AppTests";
+			sourceTree = "<group>";
+		};
 		81EF6C1C2906B29900770CD4 = {
 			isa = PBXGroup;
 			children = (
 				81EF6C2D2906B29A00770CD4 /* snake-game Watch App */,
+				06D99A99290817BA00F428CA /* snake-game Watch AppTests */,
 				81EF6C242906B29A00770CD4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,6 +108,7 @@
 			children = (
 				81EF6C232906B29A00770CD4 /* snake-game.app */,
 				81EF6C292906B29A00770CD4 /* snake-game Watch App.app */,
+				06D99A98290817BA00F428CA /* snake-game Watch AppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +154,7 @@
 				81EF6C302906B29A00770CD4 /* ContentView.swift */,
 				81EF6C432906B9D300770CD4 /* GameScene.swift */,
 				81EF6C482906F71800770CD4 /* Snake.swift */,
+				06D99A922908112600F428CA /* ShiftRegister.swift */,
 				81EF6C4A2906F7D900770CD4 /* Direction.swift */,
 			);
 			path = Source;
@@ -130,6 +163,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		06D99A97290817BA00F428CA /* snake-game Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06D99A9E290817BA00F428CA /* Build configuration list for PBXNativeTarget "snake-game Watch AppTests" */;
+			buildPhases = (
+				06D99A94290817BA00F428CA /* Sources */,
+				06D99A95290817BA00F428CA /* Frameworks */,
+				06D99A96290817BA00F428CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				06D99A9D290817BA00F428CA /* PBXTargetDependency */,
+			);
+			name = "snake-game Watch AppTests";
+			productName = "snake-game Watch AppTests";
+			productReference = 06D99A98290817BA00F428CA /* snake-game Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		81EF6C222906B29A00770CD4 /* snake-game */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81EF6C3D2906B29A00770CD4 /* Build configuration list for PBXNativeTarget "snake-game" */;
@@ -174,6 +225,10 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					06D99A97290817BA00F428CA = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 81EF6C282906B29A00770CD4;
+					};
 					81EF6C222906B29A00770CD4 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -197,11 +252,19 @@
 			targets = (
 				81EF6C222906B29A00770CD4 /* snake-game */,
 				81EF6C282906B29A00770CD4 /* snake-game Watch App */,
+				06D99A97290817BA00F428CA /* snake-game Watch AppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		06D99A96290817BA00F428CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81EF6C212906B29A00770CD4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -221,6 +284,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		06D99A94290817BA00F428CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06D99A9B290817BA00F428CA /* snake_game_Watch_AppTests.swift in Sources */,
+				06D99AA2290817D700F428CA /* ShiftRegisterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81EF6C252906B29A00770CD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,6 +300,7 @@
 				81EF6C442906B9D300770CD4 /* GameScene.swift in Sources */,
 				81EF6C492906F71800770CD4 /* Snake.swift in Sources */,
 				81EF6C312906B29A00770CD4 /* ContentView.swift in Sources */,
+				06D99A932908112600F428CA /* ShiftRegister.swift in Sources */,
 				81EF6C4B2906F7D900770CD4 /* Direction.swift in Sources */,
 				81EF6C2F2906B29A00770CD4 /* snake_gameApp.swift in Sources */,
 			);
@@ -236,6 +309,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		06D99A9D290817BA00F428CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81EF6C282906B29A00770CD4 /* snake-game Watch App */;
+			targetProxy = 06D99A9C290817BA00F428CA /* PBXContainerItemProxy */;
+		};
 		81EF6C2C2906B29A00770CD4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 81EF6C282906B29A00770CD4 /* snake-game Watch App */;
@@ -244,6 +322,45 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		06D99A9F290817BA00F428CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fanduel.snake-game-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/snake-game Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/snake-game Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		06D99AA0290817BA00F428CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fanduel.snake-game-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/snake-game Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/snake-game Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 		81EF6C372906B29A00770CD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -446,6 +563,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		06D99A9E290817BA00F428CA /* Build configuration list for PBXNativeTarget "snake-game Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06D99A9F290817BA00F428CA /* Debug */,
+				06D99AA0290817BA00F428CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		81EF6C202906B29900770CD4 /* Build configuration list for PBXProject "snake-game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -6,6 +6,18 @@ enum SnakeState {
     case dead
 }
 
+struct Coordinate {
+    let x: Int
+    let y: Int
+}
+
+struct SnakeElement {
+    let position: Coordinate
+    let hasFood: Bool
+    var directionFront: Direction? = nil
+    var directionBack: Direction?
+}
+
 class Snake: SKSpriteNode {
     
     var state: SnakeState = .moving
