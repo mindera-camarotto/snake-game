@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81148739290843CF00050D8E /* SnakeHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81148738290843CF00050D8E /* SnakeHead.swift */; };
+		8114873B2908440900050D8E /* SnakeTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8114873A2908440900050D8E /* SnakeTail.swift */; };
+		8114873D290860D900050D8E /* SnakeBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8114873C290860D900050D8E /* SnakeBody.swift */; };
+		8114873F2908818400050D8E /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8114873E2908818400050D8E /* Food.swift */; };
 		81EF6C2A2906B29A00770CD4 /* snake-game Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 81EF6C292906B29A00770CD4 /* snake-game Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		81EF6C2F2906B29A00770CD4 /* snake_gameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C2E2906B29A00770CD4 /* snake_gameApp.swift */; };
 		81EF6C312906B29A00770CD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C302906B29A00770CD4 /* ContentView.swift */; };
@@ -42,6 +46,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		81148738290843CF00050D8E /* SnakeHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeHead.swift; sourceTree = "<group>"; };
+		8114873A2908440900050D8E /* SnakeTail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeTail.swift; sourceTree = "<group>"; };
+		8114873C290860D900050D8E /* SnakeBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeBody.swift; sourceTree = "<group>"; };
+		8114873E2908818400050D8E /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		81EF6C232906B29A00770CD4 /* snake-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snake-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EF6C292906B29A00770CD4 /* snake-game Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snake-game Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EF6C2E2906B29A00770CD4 /* snake_gameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snake_gameApp.swift; sourceTree = "<group>"; };
@@ -123,6 +131,10 @@
 				81EF6C432906B9D300770CD4 /* GameScene.swift */,
 				81EF6C482906F71800770CD4 /* Snake.swift */,
 				81EF6C4A2906F7D900770CD4 /* Direction.swift */,
+				81148738290843CF00050D8E /* SnakeHead.swift */,
+				8114873A2908440900050D8E /* SnakeTail.swift */,
+				8114873C290860D900050D8E /* SnakeBody.swift */,
+				8114873E2908818400050D8E /* Food.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -225,8 +237,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8114873B2908440900050D8E /* SnakeTail.swift in Sources */,
+				81148739290843CF00050D8E /* SnakeHead.swift in Sources */,
+				8114873D290860D900050D8E /* SnakeBody.swift in Sources */,
 				81EF6C442906B9D300770CD4 /* GameScene.swift in Sources */,
 				81EF6C492906F71800770CD4 /* Snake.swift in Sources */,
+				8114873F2908818400050D8E /* Food.swift in Sources */,
 				81EF6C312906B29A00770CD4 /* ContentView.swift in Sources */,
 				81EF6C4B2906F7D900770CD4 /* Direction.swift in Sources */,
 				81EF6C2F2906B29A00770CD4 /* snake_gameApp.swift in Sources */,

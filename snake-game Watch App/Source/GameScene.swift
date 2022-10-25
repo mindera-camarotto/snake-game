@@ -3,6 +3,7 @@ import SpriteKit
 class GameScene: SKScene {
     
     private let snake = Snake()
+    private var food = Food()
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -18,45 +19,49 @@ class GameScene: SKScene {
         background.size = frame.size
         background.position = CGPoint(x: frame.midX, y: frame.midY)
         
-        snake.position = CGPoint(x: frame.midX, y: frame.midY)
-        snake.size = CGSize(width: 100, height: 40)
+        food.position = CGPoint(x: frame.midX + 40, y: frame.midY - 75)
+        food.name = "food"
         
         addChild(background)
-        addChild(snake)
+        addChild(food)
+        snake.sceneDelegate = self
+        snake.present(to: self)
     }
     
     override func update(_ currentTime: TimeInterval) {
-        checkIfSnakeTouchesBorder()
+        snake.update(currentTime)
         
-        switch snake.state {
-        case .idle:
-            break
-        case .moving:
-            snake.move()
-        case .dead:
-            print("game over")
-        }
-    }
-    
-    private func checkIfSnakeTouchesBorder() {
-        switch snake.movingDirection {
-        case .up:
-            if snake.frame.maxY >= frame.maxY { snake.state = .idle }
-            else { snake.state = .moving }
-        case .down:
-            if snake.frame.minY <= frame.minY { snake.state = .idle }
-            else { snake.state = .moving }
-        case .right:
-            if snake.frame.maxX >= frame.maxX { snake.state = .idle }
-            else { snake.state = .moving }
-        case .left:
-            if snake.frame.minX <= frame.minY { snake.state = .idle }
-            else { snake.state = .moving }
-        }
+        snake.checkCollision(food: food)
+        
+//        snake.checkIfTouchesBorder(with: frame)
+        
+//        switch snake.state {
+//        case .idle:
+//            break
+//        case .moving:
+//            snake.move()
+//        case .dead:
+//            print("game over")
+//        }
     }
     
     func didSwipe(direction: Direction) {
-        snake.movingDirection = direction
+        snake.changeDirection(direction)
     }
     
+}
+
+extension GameScene: GameSceneDelegate {
+    func spawnFood() {
+        food = Food()
+        
+        let maxX = Int(frame.maxX) - 15
+        let maxY = Int(frame.maxY) - 15
+        
+        let randomX = Int.random(in: 15...maxX)
+        let randomY = Int.random(in: 15...maxY)
+        
+        food.position = CGPoint(x: randomX, y: randomY)
+        addChild(food)
+    }
 }
