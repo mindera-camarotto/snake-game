@@ -4,6 +4,10 @@ class GameScene: SKScene {
     
     var snakeParts = [SKSpriteNode]()
     var model = SnakeModel()
+    
+//    var food : SKSpriteNode;
+    var foodLocation: Coordinate = Coordinate(x: 3, y: 3)
+    
     var lastUpdate = 0.0
     var status = GameStatus.playing
     
@@ -40,8 +44,10 @@ class GameScene: SKScene {
     private func runPlaying(currentTime: TimeInterval) {
         let delta = currentTime - lastUpdate
         if delta > 0.6 {
-            // move snake
-            model.move(withFood: true)
+            model.move()
+            if (model[0]?.position == foodLocation) {
+//                model.iJustAteSomeFood()
+            }
             snakeParts.forEach { node in
                 node.removeFromParent()
             }
