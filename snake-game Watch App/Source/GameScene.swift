@@ -51,7 +51,16 @@ class GameScene: SKScene {
     }
     
     private func spawnChild(_ item: SnakeElement) -> SKSpriteNode {
-        let snake = SnakePart(imageName: "snake.png")
+        let snakeImage: String
+        if item.directionNext == nil {
+            snakeImage = "head"
+        } else if item.directionPrevious == nil {
+            snakeImage = "tail"
+        } else {
+            snakeImage = item.isCorner() ? "corner" : "body"
+        }
+
+        let snake = SnakePart(imageName: snakeImage)
         snake.position = CGPoint(x: item.position.x * 15, y: item.position.y * 15)
         return snake
     }
