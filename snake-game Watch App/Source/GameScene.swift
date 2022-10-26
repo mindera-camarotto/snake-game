@@ -40,16 +40,16 @@ class GameScene: SKScene {
     
     private func checkIfSnakeTouchesBorder() {
         switch snake.movingDirection {
-        case .up:
+        case .north:
             if snake.frame.maxY >= frame.maxY { snake.state = .idle }
             else { snake.state = .moving }
-        case .down:
+        case .south:
             if snake.frame.minY <= frame.minY { snake.state = .idle }
             else { snake.state = .moving }
-        case .right:
+        case .east:
             if snake.frame.maxX >= frame.maxX { snake.state = .idle }
             else { snake.state = .moving }
-        case .left:
+        case .west:
             if snake.frame.minX <= frame.minY { snake.state = .idle }
             else { snake.state = .moving }
         }

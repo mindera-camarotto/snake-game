@@ -19,16 +19,16 @@ struct ContentView: View {
                 let xDist = abs(gesture.location.x - startPos.x)
                 let yDist = abs(gesture.location.y - startPos.y)
                 if startPos.y <  gesture.location.y, yDist > xDist {
-                    scene.didSwipe(direction: .down)
+                    scene.didSwipe(direction: .south)
                 }
                 else if startPos.y >  gesture.location.y, yDist > xDist {
-                    scene.didSwipe(direction: .up)
+                    scene.didSwipe(direction: .north)
                 }
                 else if startPos.x > gesture.location.x, yDist < xDist {
-                    scene.didSwipe(direction: .left)
+                    scene.didSwipe(direction: .west)
                 }
                 else if startPos.x < gesture.location.x, yDist < xDist {
-                    scene.didSwipe(direction: .right)
+                    scene.didSwipe(direction: .east)
                 }
                 isSwipping.toggle()
             }

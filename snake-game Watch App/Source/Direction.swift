@@ -1,6 +1,6 @@
 enum Direction {
-    case up
-    case down
-    case right
-    case left
+    case north
+    case south
+    case east
+    case west
 }
