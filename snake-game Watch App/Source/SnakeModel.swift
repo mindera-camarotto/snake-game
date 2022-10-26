@@ -53,6 +53,10 @@ class SnakeModel {
         currentHead?.directionNext = currentDirection
         
         snakeRegister.push(newElement)
+        
+        //Set previous direction of new tail to nil
+        var newTail = snakeRegister[snakeRegister.count - 1]
+        newTail?.directionPrevious = nil
     }
     
     func isTouchingSelf() -> Bool {
