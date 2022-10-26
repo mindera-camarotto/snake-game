@@ -2,6 +2,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    var snakeParts: [SKSpriteNode] = []
     var model = SnakeModel()
     var lastUpdate = 0.0
     
@@ -34,7 +35,10 @@ class GameScene: SKScene {
         if (delta > 0.6) {
             // move snake
             model.move(withFood: true)
-            removeAllChildren()
+            snakeParts.forEach { node in
+                node.removeFromParent()
+            }
+            snakeParts = []
             renderSnake()
             lastUpdate = currentTime
         }
@@ -49,6 +53,7 @@ class GameScene: SKScene {
             if let segment = model[i] {
                 let child = spawnChild(segment)
                 addChild(child)
+                snakeParts.append(child)
             }
         }
     }
