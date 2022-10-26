@@ -1,3 +1,7 @@
 enum GameStatus {
-    case playing, pause, ended
+    case newGame
+    case playing
+    case pause
+    case ended
+    case gameOverPresented
 }

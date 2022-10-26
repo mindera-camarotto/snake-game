@@ -2,7 +2,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var snakeParts: [SKSpriteNode] = []
+    var snakeParts = [SKSpriteNode]()
     var model = SnakeModel()
     var lastUpdate = 0.0
     var status = GameStatus.playing
@@ -19,21 +19,27 @@ class GameScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    private func setUpSprites() {
-//        let background = SKSpriteNode(imageNamed: "background")
-//        background.size = frame.size
-//        background.position = CGPoint(x: frame.midX, y: frame.midY)
-////
-////        snake.position = CGPoint(x: frame.midX, y: frame.midY)
-////        snake.size = CGSize(width: 100, height: 40)
-//        
-////        addChild(background)
-////        addChild(snake)
-//    }
-    
     override func update(_ currentTime: TimeInterval) {
+        switch status {
+        case .newGame:
+            removeAllChildren()
+            model = SnakeModel()
+            status = .playing
+        case .playing:
+            runPlaying(currentTime: currentTime)
+        case .pause:
+            // Not implemented
+            break
+        case .ended:
+            runEnded()
+        case .gameOverPresented:
+            break
+        }
+    }
+    
+    private func runPlaying(currentTime: TimeInterval) {
         let delta = currentTime - lastUpdate
-        if (delta > 0.6 && status == .playing) {
+        if delta > 0.6 {
             // move snake
             model.move(withFood: true)
             snakeParts.forEach { node in
@@ -47,8 +53,22 @@ class GameScene: SKScene {
         }
     }
     
+    private func runEnded() {
+        let label = SKLabelNode(text: "Game Over! 🐍")
+        label.position = CGPoint(x: frame.midX, y: frame.midY)
+        label.fontSize = 26
+        addChild(label)
+        status = .gameOverPresented
+    }
+    
     func turn(_ turn: Turn) {
         model.turn(turn)
+    }
+    
+    func tapped() {
+        if status == .gameOverPresented {
+            status = .newGame
+        }
     }
     
     private func renderSnake() {
