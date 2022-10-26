@@ -5,6 +5,7 @@ class GameScene: SKScene {
     var snakeParts: [SKSpriteNode] = []
     var model = SnakeModel()
     var lastUpdate = 0.0
+    var status = GameStatus.playing
     
     let _90: CGFloat = .pi / 2
     let _180: CGFloat = .pi
@@ -32,7 +33,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         let delta = currentTime - lastUpdate
-        if (delta > 0.6) {
+        if (delta > 0.6 && status == .playing) {
             // move snake
             model.move(withFood: true)
             snakeParts.forEach { node in
@@ -41,6 +42,8 @@ class GameScene: SKScene {
             snakeParts = []
             renderSnake()
             lastUpdate = currentTime
+            
+            status = model.isTouchingSelf() ? .ended : .playing
         }
     }
     
