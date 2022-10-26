@@ -30,7 +30,7 @@ class GameScene: SKScene {
         if (delta > 0.6) {
             print("going to do a move")
             // move snake
-            model.move()
+            model.move(withFood: true)
             removeAllChildren()
             renderSnake()
             lastUpdate = currentTime
@@ -48,7 +48,7 @@ class GameScene: SKScene {
     
     private func spawnChild(_ item: SnakeElement) -> SKSpriteNode {
         let snake = Snake()
-        snake.position = CGPoint(x: item.position.x * 20, y: item.position.y * 20)
+        snake.position = CGPoint(x: item.position.x * 10, y: item.position.y * 10)
         snake.size = CGSize(width: 10, height: 10)
         return snake
     }
