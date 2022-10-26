@@ -39,7 +39,7 @@ class SnakeModel {
             newHeadPosition = Coordinate(x: currentHeadPosition.x, y: currentHeadPosition.y - 1)
             backDirection = .up
         }
-        let newElement = SnakeElement(position: newHeadPosition, hasFood: withFood, directionFront: nil, directionBack: backDirection)
+        let newElement = SnakeElement(position: newHeadPosition, hasFood: withFood, directionNext: nil, directionPrevious: backDirection)
         
         //Check if tail has food and increment length if so
         var currentTail = snakeRegister[snakeRegister.count - 1]
@@ -50,7 +50,7 @@ class SnakeModel {
         
         //Set front direction of current head to new head
         var currentHead = snakeRegister[0]
-        currentHead?.directionFront = currentDirection
+        currentHead?.directionNext = currentDirection
         
         snakeRegister.push(newElement)
     }

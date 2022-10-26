@@ -3,6 +3,6 @@ import Foundation
 struct SnakeElement {
     let position: Coordinate
     var hasFood: Bool
-    var directionFront: Direction? = nil
-    var directionBack: Direction?
+    var directionNext: Direction?
+    var directionPrevious: Direction?
 }
