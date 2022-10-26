@@ -10,6 +10,9 @@
 		06D99A932908112600F428CA /* ShiftRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D99A922908112600F428CA /* ShiftRegister.swift */; };
 		06D99A9B290817BA00F428CA /* snake_game_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D99A9A290817BA00F428CA /* snake_game_Watch_AppTests.swift */; };
 		06D99AA2290817D700F428CA /* ShiftRegisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D99AA1290817D700F428CA /* ShiftRegisterTests.swift */; };
+		5981BC8B29091377003BF0DC /* SnakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5981BC8A29091377003BF0DC /* SnakeModel.swift */; };
+		5981BC8D29091473003BF0DC /* SnakeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5981BC8C29091473003BF0DC /* SnakeElement.swift */; };
+		5981BC8F290915C0003BF0DC /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5981BC8E290915C0003BF0DC /* Coordinate.swift */; };
 		81EF6C2A2906B29A00770CD4 /* snake-game Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 81EF6C292906B29A00770CD4 /* snake-game Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		81EF6C2F2906B29A00770CD4 /* snake_gameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C2E2906B29A00770CD4 /* snake_gameApp.swift */; };
 		81EF6C312906B29A00770CD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C302906B29A00770CD4 /* ContentView.swift */; };
@@ -56,6 +59,9 @@
 		06D99A98290817BA00F428CA /* snake-game Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "snake-game Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D99A9A290817BA00F428CA /* snake_game_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snake_game_Watch_AppTests.swift; sourceTree = "<group>"; };
 		06D99AA1290817D700F428CA /* ShiftRegisterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftRegisterTests.swift; sourceTree = "<group>"; };
+		5981BC8A29091377003BF0DC /* SnakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeModel.swift; sourceTree = "<group>"; };
+		5981BC8C29091473003BF0DC /* SnakeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeElement.swift; sourceTree = "<group>"; };
+		5981BC8E290915C0003BF0DC /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		81EF6C232906B29A00770CD4 /* snake-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snake-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EF6C292906B29A00770CD4 /* snake-game Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snake-game Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EF6C2E2906B29A00770CD4 /* snake_gameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snake_gameApp.swift; sourceTree = "<group>"; };
@@ -156,6 +162,9 @@
 				81EF6C482906F71800770CD4 /* Snake.swift */,
 				06D99A922908112600F428CA /* ShiftRegister.swift */,
 				81EF6C4A2906F7D900770CD4 /* Direction.swift */,
+				5981BC8A29091377003BF0DC /* SnakeModel.swift */,
+				5981BC8C29091473003BF0DC /* SnakeElement.swift */,
+				5981BC8E290915C0003BF0DC /* Coordinate.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -297,9 +306,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5981BC8B29091377003BF0DC /* SnakeModel.swift in Sources */,
 				81EF6C442906B9D300770CD4 /* GameScene.swift in Sources */,
 				81EF6C492906F71800770CD4 /* Snake.swift in Sources */,
+				5981BC8D29091473003BF0DC /* SnakeElement.swift in Sources */,
 				81EF6C312906B29A00770CD4 /* ContentView.swift in Sources */,
+				5981BC8F290915C0003BF0DC /* Coordinate.swift in Sources */,
 				06D99A932908112600F428CA /* ShiftRegister.swift in Sources */,
 				81EF6C4B2906F7D900770CD4 /* Direction.swift in Sources */,
 				81EF6C2F2906B29A00770CD4 /* snake_gameApp.swift in Sources */,
