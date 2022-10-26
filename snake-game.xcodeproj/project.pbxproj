@@ -13,6 +13,7 @@
 		5981BC8B29091377003BF0DC /* SnakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5981BC8A29091377003BF0DC /* SnakeModel.swift */; };
 		5981BC8D29091473003BF0DC /* SnakeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5981BC8C29091473003BF0DC /* SnakeElement.swift */; };
 		5981BC8F290915C0003BF0DC /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5981BC8E290915C0003BF0DC /* Coordinate.swift */; };
+		5981BC9129092DB2003BF0DC /* SnakeModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5981BC9029092DB2003BF0DC /* SnakeModelTests.swift */; };
 		81EF6C2A2906B29A00770CD4 /* snake-game Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 81EF6C292906B29A00770CD4 /* snake-game Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		81EF6C2F2906B29A00770CD4 /* snake_gameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C2E2906B29A00770CD4 /* snake_gameApp.swift */; };
 		81EF6C312906B29A00770CD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C302906B29A00770CD4 /* ContentView.swift */; };
@@ -62,6 +63,7 @@
 		5981BC8A29091377003BF0DC /* SnakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeModel.swift; sourceTree = "<group>"; };
 		5981BC8C29091473003BF0DC /* SnakeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeElement.swift; sourceTree = "<group>"; };
 		5981BC8E290915C0003BF0DC /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		5981BC9029092DB2003BF0DC /* SnakeModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeModelTests.swift; sourceTree = "<group>"; };
 		81EF6C232906B29A00770CD4 /* snake-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snake-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EF6C292906B29A00770CD4 /* snake-game Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snake-game Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EF6C2E2906B29A00770CD4 /* snake_gameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snake_gameApp.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				06D99A9A290817BA00F428CA /* snake_game_Watch_AppTests.swift */,
 				06D99AA1290817D700F428CA /* ShiftRegisterTests.swift */,
+				5981BC9029092DB2003BF0DC /* SnakeModelTests.swift */,
 			);
 			path = "snake-game Watch AppTests";
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06D99A9B290817BA00F428CA /* snake_game_Watch_AppTests.swift in Sources */,
+				5981BC9129092DB2003BF0DC /* SnakeModelTests.swift in Sources */,
 				06D99AA2290817D700F428CA /* ShiftRegisterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

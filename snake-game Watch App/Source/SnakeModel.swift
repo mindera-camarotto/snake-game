@@ -7,9 +7,9 @@ class SnakeModel {
     
     init() {
         snakeRegister.count = 3
-        snakeRegister.push(SnakeElement(position: Coordinate(x: 3, y: 3), hasFood: false, directionFront: .right, directionBack: nil))
-        snakeRegister.push(SnakeElement(position: Coordinate(x: 4, y: 3), hasFood: false, directionFront: .right, directionBack: .left))
-        snakeRegister.push(SnakeElement(position: Coordinate(x: 5, y: 3), hasFood: false, directionFront: nil, directionBack: .left))
+        snakeRegister.push(SnakeElement(position: Coordinate(x: 3, y: 3), hasFood: false, directionNext: .right, directionPrevious: nil))
+        snakeRegister.push(SnakeElement(position: Coordinate(x: 4, y: 3), hasFood: false, directionNext: .right, directionPrevious: .left))
+        snakeRegister.push(SnakeElement(position: Coordinate(x: 5, y: 3), hasFood: false, directionNext: nil, directionPrevious: .left))
     }
     
     func getLength() -> Int {
