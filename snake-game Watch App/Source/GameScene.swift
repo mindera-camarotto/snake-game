@@ -14,14 +14,6 @@ class GameScene: SKScene {
     let _90: CGFloat = .pi / 2
     let _180: CGFloat = .pi
     let _270: CGFloat = .pi / -2
-
-    override init(size: CGSize) {
-        super.init(size: size)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func update(_ currentTime: TimeInterval) {
         switch status {

@@ -1,4 +1,3 @@
-struct Coordinate: Equatable {
-    let x: Int
-    let y: Int
-}
+import Foundation
+
+typealias Coordinate = CGPoint
