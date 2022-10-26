@@ -43,7 +43,7 @@ class SnakeModel {
             currentDirection = pendingDirection
             self.pendingDirection = nil
         }
-        let currentHeadPosition = snakeRegister[0]?.position ?? Coordinate(x: 0, y: 0)
+        let currentHeadPosition = snakeRegister[0]!.position
         
         let backDirection: Direction
         let newHeadPosition: Coordinate

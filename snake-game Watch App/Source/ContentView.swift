@@ -6,37 +6,11 @@ struct ContentView: View {
     
     @State var startPos : CGPoint = .zero
     @State var isSwipping = true
-    
-    var drag: some Gesture {
-        DragGesture()
-            .onChanged { gesture in
-                if isSwipping {
-                    startPos = gesture.location
-                    isSwipping.toggle()
-                }
-            }
-            .onEnded { gesture in
-                let xDist = abs(gesture.location.x - startPos.x)
-                let yDist = abs(gesture.location.y - startPos.y)
-                if startPos.y <  gesture.location.y, yDist > xDist {
-                    scene.didSwipe(direction: .south)
-                }
-                else if startPos.y >  gesture.location.y, yDist > xDist {
-                    scene.didSwipe(direction: .north)
-                }
-                else if startPos.x > gesture.location.x, yDist < xDist {
-                    scene.didSwipe(direction: .west)
-                }
-                else if startPos.x < gesture.location.x, yDist < xDist {
-                    scene.didSwipe(direction: .east)
-                }
-                isSwipping.toggle()
-            }
-    }
+    @State var scrollAmount = 0.0
     
     var body: some View {
         SpriteView(scene: scene)
-            .gesture(drag)
+        //            .digitalCrownRotation($scrollAmount)
     }
 }
 

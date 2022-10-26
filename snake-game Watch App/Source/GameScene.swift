@@ -2,61 +2,55 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    private let snake = Snake()
-    
+    var model = SnakeModel()
+    var lastUpdate = 0.0
+
     override init(size: CGSize) {
         super.init(size: size)
-        setUpSprites()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setUpSprites() {
-        let background = SKSpriteNode(imageNamed: "background")
-        background.size = frame.size
-        background.position = CGPoint(x: frame.midX, y: frame.midY)
-        
-        snake.position = CGPoint(x: frame.midX, y: frame.midY)
-        snake.size = CGSize(width: 100, height: 40)
-        
-        addChild(background)
-        addChild(snake)
-    }
+//    private func setUpSprites() {
+//        let background = SKSpriteNode(imageNamed: "background")
+//        background.size = frame.size
+//        background.position = CGPoint(x: frame.midX, y: frame.midY)
+////
+////        snake.position = CGPoint(x: frame.midX, y: frame.midY)
+////        snake.size = CGSize(width: 100, height: 40)
+//        
+////        addChild(background)
+////        addChild(snake)
+//    }
     
     override func update(_ currentTime: TimeInterval) {
-        checkIfSnakeTouchesBorder()
-        
-        switch snake.state {
-        case .idle:
-            break
-        case .moving:
-            snake.move()
-        case .dead:
-            print("game over")
+        let delta = currentTime - lastUpdate
+        if (delta > 0.6) {
+            print("going to do a move")
+            // move snake
+            model.move()
+            removeAllChildren()
+            renderSnake()
+            lastUpdate = currentTime
         }
     }
     
-    private func checkIfSnakeTouchesBorder() {
-        switch snake.movingDirection {
-        case .north:
-            if snake.frame.maxY >= frame.maxY { snake.state = .idle }
-            else { snake.state = .moving }
-        case .south:
-            if snake.frame.minY <= frame.minY { snake.state = .idle }
-            else { snake.state = .moving }
-        case .east:
-            if snake.frame.maxX >= frame.maxX { snake.state = .idle }
-            else { snake.state = .moving }
-        case .west:
-            if snake.frame.minX <= frame.minY { snake.state = .idle }
-            else { snake.state = .moving }
+    private func renderSnake() {
+        for i in 0..<model.getLength() {
+            if let segment = model[i] {
+                let child = spawnChild(segment)
+                addChild(child)
+            }
         }
     }
     
-    func didSwipe(direction: Direction) {
-        snake.movingDirection = direction
+    private func spawnChild(_ item: SnakeElement) -> SKSpriteNode {
+        let snake = Snake()
+        snake.position = CGPoint(x: item.position.x * 20, y: item.position.y * 20)
+        snake.size = CGSize(width: 10, height: 10)
+        return snake
     }
     
 }
