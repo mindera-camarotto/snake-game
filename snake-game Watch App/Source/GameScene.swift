@@ -37,6 +37,10 @@ class GameScene: SKScene {
         }
     }
     
+    func turn(_ turn: Turn) {
+        model.turn(turn)
+    }
+    
     private func renderSnake() {
         for i in 0..<model.getLength() {
             if let segment = model[i] {
@@ -47,9 +51,8 @@ class GameScene: SKScene {
     }
     
     private func spawnChild(_ item: SnakeElement) -> SKSpriteNode {
-        let snake = Snake()
-        snake.position = CGPoint(x: item.position.x * 10, y: item.position.y * 10)
-        snake.size = CGSize(width: 10, height: 10)
+        let snake = SnakePart(imageName: "snake.png")
+        snake.position = CGPoint(x: item.position.x * 15, y: item.position.y * 15)
         return snake
     }
     

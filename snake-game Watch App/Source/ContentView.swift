@@ -7,10 +7,20 @@ struct ContentView: View {
     @State var startPos : CGPoint = .zero
     @State var isSwipping = true
     @State var scrollAmount = 0.0
+    @State var currentScrollAmount = 0.0
     
     var body: some View {
         SpriteView(scene: scene)
-        //            .digitalCrownRotation($scrollAmount)
+            .focusable()
+            .digitalCrownRotation($scrollAmount)
+            .onChange(of: scrollAmount) { newValue in
+                if newValue > currentScrollAmount {
+                    scene.turn(.left)
+                } else {
+                    scene.turn(.right)
+                }
+                self.currentScrollAmount = newValue
+            }
     }
 }
 
