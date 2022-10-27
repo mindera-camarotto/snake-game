@@ -14,7 +14,7 @@ class GameScene: SKScene {
     
     var snakeParts = [SKSpriteNode]()
     var model = SnakeModel()
-    var postMove : Callback?
+    var postMove : [Callback] = []
     
     var food: Food?
     
@@ -25,7 +25,7 @@ class GameScene: SKScene {
     let _90: CGFloat = .pi / 2
     let _180: CGFloat = .pi
     let _270: CGFloat = .pi / -2
-    let letters: [String?] = ["F", "A", "N", "D", "U", "E", "L"]
+    let letters: [String?] = [nil, "F", "A", "N", "D", "U", "E", "L"]
     var maxX: Int {
         (Int(frame.maxX - 8) / Constants.gridMultiplier)
     }
@@ -79,11 +79,16 @@ class GameScene: SKScene {
         let delta = currentTime - lastUpdate
         if delta > 0.6 {
             model.move()
-            postMove?()
+            postMove.forEach { $0() }
+            postMove = []
             
             if let foodPosition = food?.coordinate, model.headPosition == foodPosition {
-                spawnFood()
+                let lockedInFood = food
+                postMove.append() {
+                    lockedInFood?.removeFromParent()
+                }
                 model.eatFood()
+                spawnFood()
             }
             
             snakeParts.forEach { node in
@@ -112,7 +117,7 @@ class GameScene: SKScene {
     
     func turn(_ turn: Turn, postMove: @escaping Callback) {
         model.turn(turn)
-        self.postMove = postMove
+        self.postMove.append(postMove)
     }
     
     func tapped(_ position: CGPoint) {
@@ -130,18 +135,18 @@ class GameScene: SKScene {
         for i in 0..<model.length {
             var letterChosen : String?
             if i != 0, i != model.length - 1 {
-                letterChosen = letters[i % 7]
+                letterChosen = letters[i % 8]
             }
             if let segment = model[i] {
-            let child = spawnChild(segment, letter: letterChosen)
-            addChild(child)
-            snakeParts.append(child)
+                let child = spawnChild(segment, letter: letterChosen)
+                addChild(child)
+                snakeParts.append(child)
             }
         }
     }
     
     private func spawnChild(_ item: SnakeElement, letter: String?) -> SKSpriteNode {
-        let snakeImage: String
+        var snakeImage: String
         let rotation: CGFloat
         if item.directionNext == nil {
             snakeImage = "head"
@@ -191,6 +196,7 @@ class GameScene: SKScene {
             }
         }
 
+        if (item.hasFood) { snakeImage += "_food" }
         let snake = SnakePart(imageName: snakeImage, letter: letter)
         snake.position = CGPoint(x: item.position.x * Constants.gridMultiplier, y: item.position.y * Constants.gridMultiplier)
         snake.zRotation = rotation
@@ -198,7 +204,6 @@ class GameScene: SKScene {
     }
     
     func spawnFood() {
-        food?.removeFromParent()
         var newFoodCoord : Coordinate
         
         repeat {
