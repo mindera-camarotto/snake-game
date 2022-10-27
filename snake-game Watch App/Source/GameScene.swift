@@ -60,9 +60,14 @@ class GameScene: SKScene {
         model.turn(turn)
     }
     
-    func tapped() {
-        if status == .gameOverPresented {
+    func tapped(_ position: CGPoint) {
+        switch status {
+        case .gameOverPresented:
             status = .newGame
+        case .playing:
+            turn(position.x < frame.midX ? .left : .right)
+        default:
+            break
         }
     }
     

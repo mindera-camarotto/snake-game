@@ -11,8 +11,8 @@ struct ContentView: View {
     
     var body: some View {
         SpriteView(scene: scene)
-            .onTapGesture(perform: {
-                scene.tapped()
+            .onTapGesture(perform: { tap in
+                scene.tapped(CGPoint(x: tap.x, y: tap.y))
             })
             .focusable()
             .digitalCrownRotation($scrollAmount)
