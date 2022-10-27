@@ -1,3 +1,6 @@
 import Foundation
 
-typealias Coordinate = CGPoint
+struct Coordinate: Equatable {
+    let x: Int
+    let y: Int
+}

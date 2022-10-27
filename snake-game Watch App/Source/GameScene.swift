@@ -13,6 +13,12 @@ class GameScene: SKScene {
     let _90: CGFloat = .pi / 2
     let _180: CGFloat = .pi
     let _270: CGFloat = .pi / -2
+    var maxX: Int {
+        Int((frame.maxX - 8) / 15)
+    }
+    var maxY: Int {
+        Int((frame.maxY - 8) / 15)
+    }
     
     override func update(_ currentTime: TimeInterval) {
         switch status {
@@ -21,13 +27,17 @@ class GameScene: SKScene {
             spawnFood()
             model = SnakeModel()
             status = .playing
+            
         case .playing:
             runPlaying(currentTime: currentTime)
+            
         case .pause:
             // Not implemented
             break
+            
         case .ended:
             runEnded()
+            
         case .gameOverPresented:
             break
         }
@@ -35,7 +45,7 @@ class GameScene: SKScene {
     
     private func runPlaying(currentTime: TimeInterval) {
         let delta = currentTime - lastUpdate
-        if delta > 0.6 {
+        if delta > 0.5 {
             model.move()
             
             if let foodPosition = food?.coordinate, model.headPosition == foodPosition {
@@ -51,6 +61,11 @@ class GameScene: SKScene {
             lastUpdate = currentTime
             
             status = model.isTouchingSelf() ? .ended : .playing
+            if let head = model.headPosition,
+               head.x > maxX || head.x <= 0 || head.y > maxY || head.y <= 0 {
+                status = .ended
+            }
+            
         }
     }
     
@@ -146,9 +161,6 @@ class GameScene: SKScene {
     
     func spawnFood() {
         food?.removeFromParent()
-        
-        let maxX = Int((frame.maxX - 8) / 15)
-        let maxY = Int((frame.maxY - 8) / 15)
         var newFoodCoord : Coordinate
         
         repeat {
