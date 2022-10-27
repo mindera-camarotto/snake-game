@@ -36,7 +36,7 @@ class GameScene: SKScene {
     private func runPlaying(currentTime: TimeInterval) {
         let delta = currentTime - lastUpdate
         if delta > 0.6 {
-            model.move(withFood: model[0]?.position == foodLocation)
+            model.move()
             snakeParts.forEach { node in
                 node.removeFromParent()
             }

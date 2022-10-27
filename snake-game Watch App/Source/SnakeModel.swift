@@ -38,7 +38,11 @@ class SnakeModel {
         }
     }
     
-    func move(withFood: Bool = false) {
+    func eatFood() {
+        snakeRegister[0]?.hasFood = true
+    }
+    
+    func move() {
         if let pendingDirection = pendingDirection {
             currentDirection = pendingDirection
             self.pendingDirection = nil
@@ -61,7 +65,7 @@ class SnakeModel {
             newHeadPosition = Coordinate(x: currentHeadPosition.x, y: currentHeadPosition.y - 1)
             backDirection = .north
         }
-        let newElement = SnakeElement(position: newHeadPosition, hasFood: withFood, directionNext: nil, directionPrevious: backDirection)
+        let newElement = SnakeElement(position: newHeadPosition, hasFood: false, directionNext: nil, directionPrevious: backDirection)
         
         //Check if tail has food and increment length if so
         let currentTail = snakeRegister[snakeRegister.count - 1]

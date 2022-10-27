@@ -40,13 +40,7 @@ final class SnakeModelTests: XCTestCase {
     }
     
     func test_moveWithFood_causesSnakeToGrow() {
-        sut.move(withFood: true)
-        
-        XCTAssertEqual(3, sut.getLength())
-        XCTAssertTrue(sut[0]!.hasFood)
-        XCTAssertFalse(sut[1]!.hasFood)
-        XCTAssertFalse(sut[2]!.hasFood)
-        
+        sut.eatFood()
         sut.move()
         
         XCTAssertEqual(3, sut.getLength())
@@ -67,7 +61,6 @@ final class SnakeModelTests: XCTestCase {
         XCTAssertFalse(sut[0]!.hasFood)
         XCTAssertFalse(sut[1]!.hasFood)
         XCTAssertFalse(sut[2]!.hasFood)
-        XCTAssertFalse(sut[3]!.hasFood)
     }
     
     func test_turning_causesSnakeToTurn() {
@@ -94,8 +87,10 @@ final class SnakeModelTests: XCTestCase {
     }
     
     func test_snakeTouchingSelf_doesReportTouchingSelf() {
-        sut.move(withFood: true)
-        sut.move(withFood: true)
+        sut.eatFood()
+        sut.move()
+        sut.eatFood()
+        sut.move()
         sut.move()
         sut.turn(.left)
         sut.move()
