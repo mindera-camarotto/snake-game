@@ -2,34 +2,56 @@ import SwiftUI
 import SpriteKit
 import Combine
 
+
+class A {
+    static var allCallbacks : [() -> Void] = []
+    
+    static func addCallback ( callback: @escaping () -> Void) {
+        allCallbacks.append(callback)
+    }
+    
+    static func callback () {
+        allCallbacks.forEach { cb in cb() }
+    }
+}
+
+
 struct ContentView: View {
-    let scene = GameScene(size: WKInterfaceDevice.current().screenBounds.size)
     
     @State var startPos : CGPoint = .zero
     @State var isSwipping = true
-    @State var scrollAmount = 0.0
-    @State var currentScrollAmount = 0.0
+    @State var scrollAmount = 1
+    @State var currentScrollAmount = 1
+    
+    var scene = GameScene(size: WKInterfaceDevice.current().screenBounds.size)
     
     var body: some View {
+        
         SpriteView(scene: scene)
             .onTapGesture(perform: { tap in
                 scene.tapped(CGPoint(x: tap.x, y: tap.y))
             })
             .focusable()
-            .digitalCrownRotation($scrollAmount, from: -1, through: 1, sensitivity: .low)
-//            .digitalCrownRotation($scrollAmount, sensitivity: .medium)
-            .onChange(of: scrollAmount) { newValue in
-                if newValue > currentScrollAmount {
-                    print(newValue)
-                    scene.turn(.left)
-//                    scene.turn = .left
+            .digitalCrownRotation(detent: $scrollAmount, from: 0, through: 2, by: 1)
+            .onChange(of: scrollAmount, perform: { newValue in
+                print(newValue)
+                if newValue == 1 {
+                    return // don't rotate this change
+                } else if newValue > currentScrollAmount {
+                    print("ask to turn left")
+                    scene.turn(.left) {
+                        scrollAmount = 1
+                        print("attempting to set scrollAmount to 1")
+                    }
                 } else {
-                    print(newValue)
-                    scene.turn(.right)
-//                    scene.turn = .right
+                    print("ask to turn right")
+                    scene.turn(.right) {
+                        scrollAmount = 1
+                        print("attempting to set scrollAmount to 1")
+                    }
                 }
                 self.currentScrollAmount = newValue
-            }
+            })
     }
 }
 

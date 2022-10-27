@@ -5,6 +5,8 @@ struct Constants {
     static let gridMultiplier : Int = 20
 }
 
+typealias Callback = () -> Void
+
 class GameScene: SKScene {
     
     @Published var turn: Turn?
@@ -12,6 +14,7 @@ class GameScene: SKScene {
     
     var snakeParts = [SKSpriteNode]()
     var model = SnakeModel()
+    var postMove : Callback?
     
     var food: Food?
     
@@ -76,6 +79,7 @@ class GameScene: SKScene {
         let delta = currentTime - lastUpdate
         if delta > 0.6 {
             model.move()
+            postMove?()
             
             if let foodPosition = food?.coordinate, model.headPosition == foodPosition {
                 spawnFood()
@@ -106,8 +110,9 @@ class GameScene: SKScene {
         status = .gameOverPresented
     }
     
-    func turn(_ turn: Turn) {
+    func turn(_ turn: Turn, postMove: @escaping Callback) {
         model.turn(turn)
+        self.postMove = postMove
     }
     
     func tapped(_ position: CGPoint) {
@@ -115,7 +120,7 @@ class GameScene: SKScene {
         case .gameOverPresented:
             status = .newGame
         case .playing:
-            turn(position.x < frame.midX ? .left : .right)
+            turn(position.x < frame.midX ? .left : .right) {}
         default:
             break
         }
