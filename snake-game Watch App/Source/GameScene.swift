@@ -5,11 +5,10 @@ class GameScene: SKScene {
     var snakeParts = [SKSpriteNode]()
     var model = SnakeModel()
     
-//    var food : SKSpriteNode;
-    var foodLocation: Coordinate = Coordinate(x: 3, y: 3)
+    var food: Food?
     
     var lastUpdate = 0.0
-    var status = GameStatus.playing
+    var status = GameStatus.newGame
     
     let _90: CGFloat = .pi / 2
     let _180: CGFloat = .pi
@@ -19,6 +18,7 @@ class GameScene: SKScene {
         switch status {
         case .newGame:
             removeAllChildren()
+            spawnFood()
             model = SnakeModel()
             status = .playing
         case .playing:
@@ -37,6 +37,12 @@ class GameScene: SKScene {
         let delta = currentTime - lastUpdate
         if delta > 0.6 {
             model.move()
+            
+            if let foodPosition = food?.coordinate, model.headPosition == foodPosition {
+                spawnFood()
+                model.eatFood()
+            }
+            
             snakeParts.forEach { node in
                 node.removeFromParent()
             }
@@ -138,4 +144,17 @@ class GameScene: SKScene {
         return snake
     }
     
+    func spawnFood() {
+        food?.removeFromParent()
+        
+        let maxX = Int((frame.maxX - 8) / 15)
+        let maxY = Int((frame.maxY - 8) / 15)
+        
+        let randomX = Int.random(in: 1...maxX)
+        let randomY = Int.random(in: 1...maxY)
+        
+        let newFood = Food(coordinate: Coordinate(x: randomX, y: randomY))
+        food = newFood
+        addChild(newFood)
+    }
 }

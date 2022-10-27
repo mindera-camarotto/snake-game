@@ -24,6 +24,7 @@
 		81EF6C442906B9D300770CD4 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C432906B9D300770CD4 /* GameScene.swift */; };
 		81EF6C492906F71800770CD4 /* SnakePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C482906F71800770CD4 /* SnakePart.swift */; };
 		81EF6C4B2906F7D900770CD4 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C4A2906F7D900770CD4 /* Direction.swift */; };
+		81F84C56290A72D700B16502 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F84C55290A72D700B16502 /* Food.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		81EF6C432906B9D300770CD4 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		81EF6C482906F71800770CD4 /* SnakePart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakePart.swift; sourceTree = "<group>"; };
 		81EF6C4A2906F7D900770CD4 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		81F84C55290A72D700B16502 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				5981BC8E290915C0003BF0DC /* Coordinate.swift */,
 				5981BC9229093951003BF0DC /* Turn.swift */,
 				494D127A290988A8006F9C03 /* GameStatus.swift */,
+				81F84C55290A72D700B16502 /* Food.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				81EF6C442906B9D300770CD4 /* GameScene.swift in Sources */,
 				81EF6C492906F71800770CD4 /* SnakePart.swift in Sources */,
 				5981BC8D29091473003BF0DC /* SnakeElement.swift in Sources */,
+				81F84C56290A72D700B16502 /* Food.swift in Sources */,
 				81EF6C312906B29A00770CD4 /* ContentView.swift in Sources */,
 				5981BC8F290915C0003BF0DC /* Coordinate.swift in Sources */,
 				494D127B290988A8006F9C03 /* GameStatus.swift in Sources */,

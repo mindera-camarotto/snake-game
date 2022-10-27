@@ -6,6 +6,10 @@ class SnakeModel {
     private var currentDirection: Direction = .east
     private var pendingDirection: Direction? = nil
     
+    var headPosition: Coordinate? {
+        snakeRegister[0]?.position
+    }
+    
     init() {
         snakeRegister.count = 3
         snakeRegister.push(SnakeElement(position: Coordinate(x: 3, y: 3), hasFood: false, directionNext: .east, directionPrevious: nil))
