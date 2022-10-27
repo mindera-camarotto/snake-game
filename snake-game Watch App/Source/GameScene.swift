@@ -1,5 +1,11 @@
 import SpriteKit
 
+struct Constants {
+    static let gridMultiplier : Int = 20
+}
+
+let letters: [String?] = [ "F","A", "N", "D", "U", "E", "L"]
+
 class GameScene: SKScene {
     
     var snakeParts = [SKSpriteNode]()
@@ -14,10 +20,10 @@ class GameScene: SKScene {
     let _180: CGFloat = .pi
     let _270: CGFloat = .pi / -2
     var maxX: Int {
-        Int((frame.maxX - 8) / 15)
+        (Int(frame.maxX - 8) / Constants.gridMultiplier)
     }
     var maxY: Int {
-        Int((frame.maxY - 8) / 15)
+        (Int(frame.maxY - 8) / Constants.gridMultiplier)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -32,7 +38,6 @@ class GameScene: SKScene {
             runPlaying(currentTime: currentTime)
             
         case .pause:
-            // Not implemented
             break
             
         case .ended:
@@ -45,7 +50,7 @@ class GameScene: SKScene {
     
     private func runPlaying(currentTime: TimeInterval) {
         let delta = currentTime - lastUpdate
-        if delta > 0.5 {
+        if delta > 0.25 {
             model.move()
             
             if let foodPosition = food?.coordinate, model.headPosition == foodPosition {
@@ -94,15 +99,20 @@ class GameScene: SKScene {
     
     private func renderSnake() {
         for i in 0..<model.getLength() {
+            var letterChosen : String?
+            if i != 0 && i != model.getLength() {
+                letterChosen = letters[(i % 6) - 1]
+            }
             if let segment = model[i] {
-                let child = spawnChild(segment)
+                
+                let child = spawnChild(segment, letter: letterChosen)
                 addChild(child)
                 snakeParts.append(child)
             }
         }
     }
     
-    private func spawnChild(_ item: SnakeElement) -> SKSpriteNode {
+    private func spawnChild(_ item: SnakeElement, letter: String?) -> SKSpriteNode {
         let snakeImage: String
         let rotation: CGFloat
         if item.directionNext == nil {
@@ -153,8 +163,8 @@ class GameScene: SKScene {
             }
         }
 
-        let snake = SnakePart(imageName: snakeImage)
-        snake.position = CGPoint(x: item.position.x * 15, y: item.position.y * 15)
+        let snake = SnakePart(imageName: snakeImage, letter: letter)
+        snake.position = CGPoint(x: item.position.x * Constants.gridMultiplier, y: item.position.y * Constants.gridMultiplier)
         snake.zRotation = rotation
         return snake
     }

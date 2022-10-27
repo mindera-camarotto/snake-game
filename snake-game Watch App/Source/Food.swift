@@ -7,10 +7,10 @@ class Food: SKSpriteNode {
         self.coordinate = coordinate
         
         let texture = SKTexture(imageNamed: "dk-food")
-        let size = CGSize(width: 15, height: 15)
+        let size = CGSize(width: Constants.gridMultiplier, height: Constants.gridMultiplier)
         super.init(texture: texture, color: .clear, size: size)
         
-        position = CGPoint(x: coordinate.x * 15, y: coordinate.y * 15)
+        position = CGPoint(x: coordinate.x * Constants.gridMultiplier, y: coordinate.y * Constants.gridMultiplier)
     }
     
     required init?(coder aDecoder: NSCoder) {
