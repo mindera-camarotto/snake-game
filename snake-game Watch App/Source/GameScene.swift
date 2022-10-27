@@ -13,6 +13,7 @@ class GameScene: SKScene {
     
     var lastUpdate = 0.0
     var status = GameStatus.newGame
+    var lastGameOver: Double?
     
     let _90: CGFloat = .pi / 2
     let _180: CGFloat = .pi
@@ -28,19 +29,21 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         switch status {
         case .newGame:
-            removeAllChildren()
-            spawnFood()
-            model = SnakeModel()
-            status = .playing
-            
+            if checkNewGame(currentTime: currentTime) {
+                removeAllChildren()
+                spawnFood()
+                model = SnakeModel()
+                status = .playing
+            }
         case .playing:
             runPlaying(currentTime: currentTime)
             
         case .pause:
             break
             
-        case .ended:
-            runEnded()
+        case .dead:
+            lastGameOver = currentTime
+            presentGameOver()
             
         case .gameOverPresented:
             break
@@ -64,16 +67,16 @@ class GameScene: SKScene {
             renderSnake()
             lastUpdate = currentTime
             
-            status = model.isTouchingSelf() ? .ended : .playing
+            status = model.isTouchingSelf() ? .dead : .playing
             if let head = model.headPosition,
                head.x > maxX || head.x <= 0 || head.y > maxY || head.y <= 0 {
-                status = .ended
+                status = .dead
             }
             
         }
     }
     
-    private func runEnded() {
+    private func presentGameOver() {
         let label = SKLabelNode(text: "Game Over! 🐍")
         label.position = CGPoint(x: frame.midX, y: frame.midY)
         label.fontSize = 26
@@ -179,5 +182,16 @@ class GameScene: SKScene {
         
         food = Food(coordinate: newFoodCoord)
         addChild(food!)
+    }
+    
+    private func checkNewGame(currentTime: TimeInterval) -> Bool {
+        guard let lastGameOver else { return true }
+        
+        let delta = currentTime - lastGameOver
+        if delta > 2.5 {
+            self.lastGameOver = nil
+            return true
+        }
+        return false
     }
 }
