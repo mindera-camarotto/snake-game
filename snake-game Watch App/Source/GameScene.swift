@@ -85,7 +85,7 @@ class GameScene: SKScene {
     
     private func runPlaying(currentTime: TimeInterval) {
         let delta = currentTime - lastUpdate
-        if delta > difficulty.rawValue {
+        if delta > difficulty.getTick(foodEaten) {
             model.move()
             postMove.forEach { $0() }
             postMove = []

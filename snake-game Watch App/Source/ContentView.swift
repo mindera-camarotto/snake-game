@@ -8,6 +8,13 @@ enum Difficulty : Double {
     case medium  = 0.4
     case hard  = 0.3
     case crazy  = 0.2
+    
+    func getTick(_ eatenFood: Int) -> Double {
+        // lowest you could ever be is 0.1
+        let x = self.rawValue * pow(0.98, Double(eatenFood))
+        let y = 0.1
+        return max(x,y)
+    }
 }
 
 struct ContentView: View {
@@ -56,17 +63,9 @@ struct ContentView: View {
                 .onChange(of: scrollAmount, perform: { newValue in
                     print(newValue)
                     if newValue > currentScrollAmount {
-                        print("ask to turn left")
-                        scene.turn(.left) {
-                            //                        scrollAmount = 1
-                            print("attempting to set scrollAmount to 1")
-                        }
+                        scene.turn(.left) { }
                     } else {
-                        print("ask to turn right")
-                        scene.turn(.right) {
-                            //                        scrollAmount = 1
-                            print("attempting to set scrollAmount to 1")
-                        }
+                        scene.turn(.right) { }
                     }
                     self.currentScrollAmount = newValue
                 })
