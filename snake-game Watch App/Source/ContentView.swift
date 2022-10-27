@@ -2,20 +2,6 @@ import SwiftUI
 import SpriteKit
 import Combine
 
-
-class A {
-    static var allCallbacks : [() -> Void] = []
-    
-    static func addCallback ( callback: @escaping () -> Void) {
-        allCallbacks.append(callback)
-    }
-    
-    static func callback () {
-        allCallbacks.forEach { cb in cb() }
-    }
-}
-
-
 struct ContentView: View {
     
     @State var startPos : CGPoint = .zero
