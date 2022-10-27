@@ -1,10 +1,14 @@
 import SpriteKit
+import Combine
 
 struct Constants {
     static let gridMultiplier : Int = 20
 }
 
 class GameScene: SKScene {
+    
+    @Published var turn: Turn?
+    private var cancellables = Set<AnyCancellable>()
     
     var snakeParts = [SKSpriteNode]()
     var model = SnakeModel()
@@ -24,6 +28,24 @@ class GameScene: SKScene {
     }
     var maxY: Int {
         (Int(frame.maxY - 8) / Constants.gridMultiplier)
+    }
+    
+    override init(size: CGSize) {
+        super.init(size: size)
+        
+        $turn
+            .debounce(for: .milliseconds(100), scheduler: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] turn in
+                print(turn)
+                self!.model.turn(turn)
+//                self?.turn(turn)
+            }
+            .store(in: &cancellables)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -52,7 +74,7 @@ class GameScene: SKScene {
     
     private func runPlaying(currentTime: TimeInterval) {
         let delta = currentTime - lastUpdate
-        if delta > 0.25 {
+        if delta > 0.6 {
             model.move()
             
             if let foodPosition = food?.coordinate, model.headPosition == foodPosition {

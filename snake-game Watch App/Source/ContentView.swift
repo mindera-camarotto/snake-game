@@ -1,5 +1,6 @@
 import SwiftUI
 import SpriteKit
+import Combine
 
 struct ContentView: View {
     let scene = GameScene(size: WKInterfaceDevice.current().screenBounds.size)
@@ -15,12 +16,17 @@ struct ContentView: View {
                 scene.tapped(CGPoint(x: tap.x, y: tap.y))
             })
             .focusable()
-            .digitalCrownRotation($scrollAmount)
+            .digitalCrownRotation($scrollAmount, from: -1, through: 1, sensitivity: .low)
+//            .digitalCrownRotation($scrollAmount, sensitivity: .medium)
             .onChange(of: scrollAmount) { newValue in
                 if newValue > currentScrollAmount {
+                    print(newValue)
                     scene.turn(.left)
+//                    scene.turn = .left
                 } else {
+                    print(newValue)
                     scene.turn(.right)
+//                    scene.turn = .right
                 }
                 self.currentScrollAmount = newValue
             }
