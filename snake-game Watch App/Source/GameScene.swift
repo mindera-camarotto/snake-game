@@ -12,9 +12,11 @@ class GameScene: SKScene {
     @Published var turn: Turn?
     private var cancellables = Set<AnyCancellable>()
     
+    
     var snakeParts = [SKSpriteNode]()
     var model = SnakeModel()
     var postMove : [Callback] = []
+    var foodEaten = 0
     
     var food: Food?
     
@@ -51,14 +53,19 @@ class GameScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func newGame() {
+        removeAllChildren()
+        spawnFood()
+        foodEaten = 0
+        model = SnakeModel()
+        status = .playing
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         switch status {
         case .newGame:
             if checkNewGame(currentTime: currentTime) {
-                removeAllChildren()
-                spawnFood()
-                model = SnakeModel()
-                status = .playing
+                newGame()
             }
         case .playing:
             runPlaying(currentTime: currentTime)
@@ -108,10 +115,16 @@ class GameScene: SKScene {
     }
     
     private func presentGameOver() {
-        let label = SKLabelNode(text: "Game Over! 🐍")
+        let label = SKLabelNode(text: "Game Over!")
         label.position = CGPoint(x: frame.midX, y: frame.midY)
         label.fontSize = 26
         addChild(label)
+        
+        let label2 = SKLabelNode(text: "DKs Eaten: \(foodEaten)")
+        label2.position = CGPoint(x: frame.midX, y: frame.midY - 26)
+        label2.fontSize = 26
+        addChild(label2)
+        
         status = .gameOverPresented
     }
     
@@ -213,6 +226,7 @@ class GameScene: SKScene {
         } while model.currentPositions.contains(newFoodCoord)
         
         food = Food(coordinate: newFoodCoord)
+        foodEaten += 1
         addChild(food!)
     }
     
