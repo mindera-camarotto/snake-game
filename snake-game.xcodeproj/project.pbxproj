@@ -16,6 +16,7 @@
 		5981BC8F290915C0003BF0DC /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5981BC8E290915C0003BF0DC /* Coordinate.swift */; };
 		5981BC9129092DB2003BF0DC /* SnakeModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5981BC9029092DB2003BF0DC /* SnakeModelTests.swift */; };
 		5981BC9329093951003BF0DC /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5981BC9229093951003BF0DC /* Turn.swift */; };
+		8156A0AB290AECB4009E389E /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8156A0AA290AECB4009E389E /* Difficulty.swift */; };
 		81EF6C2A2906B29A00770CD4 /* snake-game Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 81EF6C292906B29A00770CD4 /* snake-game Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		81EF6C2F2906B29A00770CD4 /* snake_gameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C2E2906B29A00770CD4 /* snake_gameApp.swift */; };
 		81EF6C312906B29A00770CD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EF6C302906B29A00770CD4 /* ContentView.swift */; };
@@ -69,6 +70,7 @@
 		5981BC8E290915C0003BF0DC /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		5981BC9029092DB2003BF0DC /* SnakeModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeModelTests.swift; sourceTree = "<group>"; };
 		5981BC9229093951003BF0DC /* Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
+		8156A0AA290AECB4009E389E /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		81EF6C232906B29A00770CD4 /* snake-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snake-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EF6C292906B29A00770CD4 /* snake-game Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snake-game Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EF6C2E2906B29A00770CD4 /* snake_gameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snake_gameApp.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				5981BC9229093951003BF0DC /* Turn.swift */,
 				494D127A290988A8006F9C03 /* GameStatus.swift */,
 				81F84C55290A72D700B16502 /* Food.swift */,
+				8156A0AA290AECB4009E389E /* Difficulty.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				06D99A932908112600F428CA /* ShiftRegister.swift in Sources */,
 				81EF6C4B2906F7D900770CD4 /* Direction.swift in Sources */,
 				81EF6C2F2906B29A00770CD4 /* snake_gameApp.swift in Sources */,
+				8156A0AB290AECB4009E389E /* Difficulty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

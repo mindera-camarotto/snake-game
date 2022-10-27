@@ -9,10 +9,6 @@ typealias Callback = () -> Void
 
 class GameScene: SKScene {
     
-    @Published var turn: Turn?
-    private var cancellables = Set<AnyCancellable>()
-    
-    
     var snakeParts = [SKSpriteNode]()
     var model = SnakeModel()
     var postMove : [Callback] = []
@@ -34,24 +30,6 @@ class GameScene: SKScene {
     }
     var maxY: Int {
         (Int(frame.maxY - 8) / Constants.gridMultiplier)
-    }
-    
-    override init(size: CGSize) {
-        super.init(size: size)
-        
-        $turn
-            .debounce(for: .milliseconds(100), scheduler: DispatchQueue.main)
-            .compactMap { $0 }
-            .sink { [weak self] turn in
-                print(turn)
-                self!.model.turn(turn)
-//                self?.turn(turn)
-            }
-            .store(in: &cancellables)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private func newGame() {
@@ -210,7 +188,7 @@ class GameScene: SKScene {
             }
         }
 
-        if (item.hasFood) { snakeImage += "_food" }
+        if item.hasFood { snakeImage += "_food" }
         let snake = SnakePart(imageName: snakeImage, letter: letter)
         snake.position = CGPoint(x: item.position.x * Constants.gridMultiplier, y: item.position.y * Constants.gridMultiplier)
         snake.zRotation = rotation
@@ -226,9 +204,10 @@ class GameScene: SKScene {
             newFoodCoord = Coordinate(x: randomX, y: randomY)
         } while model.currentPositions.contains(newFoodCoord)
         
-        food = Food(coordinate: newFoodCoord)
+        let newFood = Food(coordinate: newFoodCoord)
+        food = newFood
         foodEaten += 1
-        addChild(food!)
+        addChild(newFood)
     }
     
     private func checkNewGame(currentTime: TimeInterval) -> Bool {
