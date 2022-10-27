@@ -14,15 +14,15 @@ class SnakeModel {
         return snakeRegister.elements.map {element in element.position }
     }
     
+    var length: Int {
+        snakeRegister.count
+    }
+    
     init() {
         snakeRegister.count = 3
         snakeRegister.push(SnakeElement(position: Coordinate(x: 3, y: 3), hasFood: false, directionNext: .east, directionPrevious: nil))
         snakeRegister.push(SnakeElement(position: Coordinate(x: 4, y: 3), hasFood: false, directionNext: .east, directionPrevious: .west))
         snakeRegister.push(SnakeElement(position: Coordinate(x: 5, y: 3), hasFood: false, directionNext: nil, directionPrevious: .west))
-    }
-    
-    func getLength() -> Int {
-        return snakeRegister.count
     }
     
     func turn(_ turn: Turn) {

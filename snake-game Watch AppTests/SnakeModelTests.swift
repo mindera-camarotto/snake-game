@@ -10,7 +10,7 @@ final class SnakeModelTests: XCTestCase {
     }
     
     func test_snakeInitialised_with3ElementsAndRightDirection() {
-        XCTAssertEqual(3, sut.getLength())
+        XCTAssertEqual(3, sut.length)
         XCTAssertEqual(Coordinate(x: 5, y: 3), sut[0]!.position)
         XCTAssertEqual(Coordinate(x: 4, y: 3), sut[1]!.position)
         XCTAssertEqual(Coordinate(x: 3, y: 3), sut[2]!.position)
@@ -26,7 +26,7 @@ final class SnakeModelTests: XCTestCase {
     func test_snakeMoved_correctlyAdjustsElements() {
         sut.move()
         
-        XCTAssertEqual(3, sut.getLength())
+        XCTAssertEqual(3, sut.length)
         XCTAssertEqual(Coordinate(x: 6, y: 3), sut[0]!.position)
         XCTAssertEqual(Coordinate(x: 5, y: 3), sut[1]!.position)
         XCTAssertEqual(Coordinate(x: 4, y: 3), sut[2]!.position)
@@ -43,21 +43,21 @@ final class SnakeModelTests: XCTestCase {
         sut.eatFood()
         sut.move()
         
-        XCTAssertEqual(3, sut.getLength())
+        XCTAssertEqual(3, sut.length)
         XCTAssertFalse(sut[0]!.hasFood)
         XCTAssertTrue(sut[1]!.hasFood)
         XCTAssertFalse(sut[2]!.hasFood)
         
         sut.move()
         
-        XCTAssertEqual(3, sut.getLength())
+        XCTAssertEqual(3, sut.length)
         XCTAssertFalse(sut[0]!.hasFood)
         XCTAssertFalse(sut[1]!.hasFood)
         XCTAssertTrue(sut[2]!.hasFood)
         
         sut.move()
         
-        XCTAssertEqual(4, sut.getLength())
+        XCTAssertEqual(4, sut.length)
         XCTAssertFalse(sut[0]!.hasFood)
         XCTAssertFalse(sut[1]!.hasFood)
         XCTAssertFalse(sut[2]!.hasFood)

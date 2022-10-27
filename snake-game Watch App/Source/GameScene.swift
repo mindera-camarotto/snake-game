@@ -4,8 +4,6 @@ struct Constants {
     static let gridMultiplier : Int = 20
 }
 
-let letters: [String?] = [ "F","A", "N", "D", "U", "E", "L"]
-
 class GameScene: SKScene {
     
     var snakeParts = [SKSpriteNode]()
@@ -19,6 +17,7 @@ class GameScene: SKScene {
     let _90: CGFloat = .pi / 2
     let _180: CGFloat = .pi
     let _270: CGFloat = .pi / -2
+    let letters: [String?] = ["F", "A", "N", "D", "U", "E", "L"]
     var maxX: Int {
         (Int(frame.maxX - 8) / Constants.gridMultiplier)
     }
@@ -98,16 +97,15 @@ class GameScene: SKScene {
     }
     
     private func renderSnake() {
-        for i in 0..<model.getLength() {
+        for i in 0..<model.length {
             var letterChosen : String?
-            if i != 0 && i != model.getLength() {
-                letterChosen = letters[(i % 6) - 1]
+            if i != 0, i != model.length - 1 {
+                letterChosen = letters[i % 7]
             }
             if let segment = model[i] {
-                
-                let child = spawnChild(segment, letter: letterChosen)
-                addChild(child)
-                snakeParts.append(child)
+            let child = spawnChild(segment, letter: letterChosen)
+            addChild(child)
+            snakeParts.append(child)
             }
         }
     }
