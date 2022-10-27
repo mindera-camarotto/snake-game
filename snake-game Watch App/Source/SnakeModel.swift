@@ -20,9 +20,9 @@ class SnakeModel {
     
     init() {
         snakeRegister.count = 3
-        snakeRegister.push(SnakeElement(position: Coordinate(x: 3, y: 3), hasFood: false, directionNext: .east, directionPrevious: nil))
-        snakeRegister.push(SnakeElement(position: Coordinate(x: 4, y: 3), hasFood: false, directionNext: .east, directionPrevious: .west))
-        snakeRegister.push(SnakeElement(position: Coordinate(x: 5, y: 3), hasFood: false, directionNext: nil, directionPrevious: .west))
+        snakeRegister.push(SnakeElement(position: Coordinate(x: 0, y: 5), hasFood: false, directionNext: .east, directionPrevious: nil))
+        snakeRegister.push(SnakeElement(position: Coordinate(x: 1, y: 5), hasFood: false, directionNext: .east, directionPrevious: .west))
+        snakeRegister.push(SnakeElement(position: Coordinate(x: 2, y: 5), hasFood: false, directionNext: nil, directionPrevious: .west))
     }
     
     func turn(_ turn: Turn) {

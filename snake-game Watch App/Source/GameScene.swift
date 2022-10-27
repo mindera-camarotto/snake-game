@@ -17,6 +17,7 @@ class GameScene: SKScene {
     var model = SnakeModel()
     var postMove : [Callback] = []
     var foodEaten = 0
+    var difficulty : Difficulty = .medium
     
     var food: Food?
     
@@ -84,7 +85,7 @@ class GameScene: SKScene {
     
     private func runPlaying(currentTime: TimeInterval) {
         let delta = currentTime - lastUpdate
-        if delta > 0.6 {
+        if delta > difficulty.rawValue {
             model.move()
             postMove.forEach { $0() }
             postMove = []
