@@ -149,12 +149,15 @@ class GameScene: SKScene {
         
         let maxX = Int((frame.maxX - 8) / 15)
         let maxY = Int((frame.maxY - 8) / 15)
+        var newFoodCoord : Coordinate
         
-        let randomX = Int.random(in: 1...maxX)
-        let randomY = Int.random(in: 1...maxY)
+        repeat {
+            let randomX = Int.random(in: 1...maxX)
+            let randomY = Int.random(in: 1...maxY)
+            newFoodCoord = Coordinate(x: randomX, y: randomY)
+        } while model.currentPositions.contains(newFoodCoord)
         
-        let newFood = Food(coordinate: Coordinate(x: randomX, y: randomY))
-        food = newFood
-        addChild(newFood)
+        food = Food(coordinate: newFoodCoord)
+        addChild(food!)
     }
 }

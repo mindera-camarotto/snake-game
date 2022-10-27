@@ -1,7 +1,7 @@
 import Foundation
 
 class ShiftRegister<T> {
-    private var elements: [T] = []
+    private (set) var elements: [T] = []
     var count: Int = 0 {
         didSet {
             removeExcessElements()

@@ -10,6 +10,10 @@ class SnakeModel {
         snakeRegister[0]?.position
     }
     
+    var currentPositions: [Coordinate] {
+        return snakeRegister.elements.map {element in element.position }
+    }
+    
     init() {
         snakeRegister.count = 3
         snakeRegister.push(SnakeElement(position: Coordinate(x: 3, y: 3), hasFood: false, directionNext: .east, directionPrevious: nil))
