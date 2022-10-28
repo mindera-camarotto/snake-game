@@ -1,14 +1,12 @@
 import SpriteKit
 import Combine
 
-struct Constants {
-    static let gridMultiplier : Int = 20
-}
-
 typealias Callback = () -> Void
 
 class GameScene: SKScene {
     
+    @Published var turn: Turn?
+    private var cancellables = Set<AnyCancellable>()
     var snakeParts = [SKSpriteNode]()
     var model = SnakeModel()
     var postMove : [Callback] = []
@@ -25,11 +23,19 @@ class GameScene: SKScene {
     let _180: CGFloat = .pi
     let _270: CGFloat = .pi / -2
     let letters: [String?] = [nil, "F", "A", "N", "D", "U", "E", "L"]
-    var maxX: Int {
-        (Int(frame.maxX - 8) / Constants.gridMultiplier)
+    private var maxX: Int {
+        get {
+            let multiplier = difficulty.getGridMultiplier()
+            let space = Int(frame.maxX) - (multiplier / 2)
+            return space / multiplier
+        }
     }
-    var maxY: Int {
-        (Int(frame.maxY - 8) / Constants.gridMultiplier)
+    private var maxY: Int {
+        get {
+            let multiplier = difficulty.getGridMultiplier()
+            let space = Int(frame.maxY) - (multiplier / 2)
+            return space / multiplier
+        }
     }
     
     private func newGame() {
@@ -188,23 +194,24 @@ class GameScene: SKScene {
             }
         }
 
-        if item.hasFood { snakeImage += "_food" }
-        let snake = SnakePart(imageName: snakeImage, letter: letter)
-        snake.position = CGPoint(x: item.position.x * Constants.gridMultiplier, y: item.position.y * Constants.gridMultiplier)
+        if (item.hasFood) { snakeImage += "_food" }
+        let snake = SnakePart(imageName: snakeImage, size: difficulty.getGridMultiplier(), letter: letter)
+        let x = item.position.x * difficulty.getGridMultiplier()
+        let y = item.position.y * difficulty.getGridMultiplier()
+        snake.position = CGPoint(x: x, y: y)
         snake.zRotation = rotation
         return snake
     }
     
     func spawnFood() {
         var newFoodCoord : Coordinate
-        
         repeat {
             let randomX = Int.random(in: 1...maxX)
             let randomY = Int.random(in: 1...maxY)
             newFoodCoord = Coordinate(x: randomX, y: randomY)
         } while model.currentPositions.contains(newFoodCoord)
         
-        let newFood = Food(coordinate: newFoodCoord)
+        let newFood = Food(coordinate: newFoodCoord, size: difficulty.getGridMultiplier())
         food = newFood
         foodEaten += 1
         addChild(newFood)

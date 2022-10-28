@@ -3,14 +3,17 @@ import SpriteKit
 class Food: SKSpriteNode {
     let coordinate: Coordinate
     
-    init(coordinate: Coordinate) {
+    init(coordinate: Coordinate, size: Int) {
         self.coordinate = coordinate
         
         let texture = SKTexture(imageNamed: "dk-food")
-        let size = CGSize(width: Constants.gridMultiplier, height: Constants.gridMultiplier)
-        super.init(texture: texture, color: .clear, size: size)
+        let imgSize = CGSize(width: size, height: size)
+        super.init(texture: texture, color: .clear, size: imgSize)
         
-        position = CGPoint(x: coordinate.x * Constants.gridMultiplier, y: coordinate.y * Constants.gridMultiplier)
+        let x = coordinate.x * size
+        let y = coordinate.y * size
+        
+        position = CGPoint(x: x, y: y)
     }
     
     required init?(coder aDecoder: NSCoder) {
