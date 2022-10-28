@@ -4,9 +4,7 @@ import Combine
 typealias Callback = () -> Void
 
 class GameScene: SKScene {
-    
-    @Published var turn: Turn?
-    private var cancellables = Set<AnyCancellable>()
+
     var snakeParts = [SKSpriteNode]()
     var model = SnakeModel()
     var postMove : [Callback] = []
